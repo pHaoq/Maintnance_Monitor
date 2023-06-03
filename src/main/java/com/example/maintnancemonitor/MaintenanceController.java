@@ -6,6 +6,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MaintenanceController {
 
+    private String message = "Everything works as expected";
+
+    @RequestMapping("/api/message")
+    public String message(){
+        return message;
+    }
+
     @RequestMapping("/")
     public String homepage() {
     return String.format("Willkommen beim Maintenance Monitor von Matthias und Hao." + "<br>" +
