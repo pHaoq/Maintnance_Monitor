@@ -2,6 +2,7 @@ package com.example.maintnancemonitor;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class MaintenanceController {
@@ -24,4 +25,19 @@ public class MaintenanceController {
                          "mit /api/message/reset kann die Nachricht wieder zurückgesetzt werden"
                         );
     }
+    @RequestMapping("/api/message/set")
+    public String setmessage(@RequestParam String m){
+        if(m==null) {
+            m = "Everything operates as expected";
+        }
+            this.message=m;
+        return "ok";
+    }
+    @RequestMapping("/api/message/rest")
+    public String reset(){
+        setmessage(null);
+        return "ok";
+    }
+
+
 }
